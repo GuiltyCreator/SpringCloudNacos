@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: service-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #注册中心地址
+        group: com.dcone # 默认为DEFAULT_GROUP
+      config:
+        group: com.dcone # 默认为DEFAULT_GROUP
+        # name: config.yml 如果加上这个配置，会读取该文件名的配置
+        server-addr: 127.0.0.1:8848 # 配置中心地址
+        file-extension: yml # 假如不配置，则nacos远程配置文件的后缀为.properties
+server:
+  servlet:
+    context-path: /consumer
+
+# 开启熔断器
+feign:
+  hystrix:
+    enabled: true
